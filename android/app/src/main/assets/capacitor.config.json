@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "open-valencia",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
