@@ -4,7 +4,7 @@ import { expect } from '@jest/globals';
 import { ionFireEvent } from '@ionic/react-test-utils';
 
 describe('New Reason Form', () => {
-  it('calls onCreate prop when the form is submitted', async () => {
+  it('calls onCreate prop when the form is submitted and valid', async () => {
     const onCreate = jest.fn().mockName('onCreate');
     const reasonText = 'New Reason 1';
 
@@ -20,6 +20,63 @@ describe('New Reason Form', () => {
     });
   });
 
-  it('allows only numbers in the input', () => {});
-  it('clears the input value after submitting the form', () => {});
+  it('does not call onCreate prop when the form is submitted and invalid', async () => {
+    const onCreate = jest.fn().mockName('onCreate');
+    const reasonText = 'New Reason 1';
+
+    const { getByTestId } = render(<NewReasonForm onCreate={onCreate} />);
+
+    const inputArea = getByTestId('new-reason-form-text-area');
+    ionFireEvent.ionChange(inputArea, reasonText);
+    ionFireEvent.ionChange(inputArea, '');
+    const submitButton = getByTestId('new-reason-form-submit');
+    ionFireEvent.submit(submitButton!);
+
+    await new Promise(r => setTimeout(r, 1000));
+    expect(onCreate).not.toHaveBeenCalled();
+  });
+
+  it('does not show any error when the form is untouched', () => {
+    const onCreate = jest.fn().mockName('onCreate');
+
+    const { queryAllByTestId } = render(<NewReasonForm onCreate={onCreate} />);
+
+    expect(queryAllByTestId('form-error-message-text').length).toBe(0);
+  });
+
+  it('shows an error when the reason text is empty and the field is dirty', async () => {
+    const onCreate = jest.fn().mockName('onCreate');
+
+    const { getByTestId, findByText } = render(
+      <NewReasonForm onCreate={onCreate} />,
+    );
+
+    const submitButton = getByTestId('new-reason-form-submit');
+    ionFireEvent.submit(submitButton!);
+
+    expect(await findByText('This field cannot be empty.')).not.toBeNull();
+  });
+
+  // it('clears the input value after submitting the form', async () => {
+  //   const onCreate = jest.fn().mockName('onCreate');
+  //   const reasonText = 'New Reason 1';
+
+  //   const { getByTestId, findByDisplayValue, container } = render(
+  //     <NewReasonForm onCreate={onCreate} />,
+  //   );
+
+  //   const inputArea = getByTestId(
+  //     'new-reason-form-text-area',
+  //   ) as HTMLIonTextareaElement;
+  //   ionFireEvent.ionChange(inputArea, reasonText);
+
+  //   expect(container.querySelector(`[value="${reasonText}"]`)).toBeDefined();
+
+  //   const submitButton = getByTestId('new-reason-form-submit');
+  //   ionFireEvent.submit(submitButton!);
+
+  //   expect(
+  //     container.querySelector(`[value="${reasonText}"]`),
+  //   ).not.toBeDefined();
+  // });
 });
