@@ -1,4 +1,4 @@
-import ReasonList from '../components/ReasonList';
+import ReasonsList from '../components/ReasonsList';
 import {
   IonContent,
   IonHeader,
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        {/* <ReasonList
+        {/* <ReasonsList
           reasons={["ASD"]}
           onAddReason={() => {
             console.log("ASDASD");

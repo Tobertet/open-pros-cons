@@ -21,18 +21,14 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import NewReasonForm from './components/NewReasonForm';
+import ReasonsList from './components/ReasonsList';
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/" exact={true}>
-          <NewReasonForm
-            onCreate={asd => {
-              console.log(asd);
-            }}
-          />
+          <ReasonsList title="Whatever" reasons={[{ text: 'Sting' }]} />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
