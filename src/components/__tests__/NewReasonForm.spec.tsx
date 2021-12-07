@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { act, render, waitFor } from '@testing-library/react';
 import NewReasonForm from '../NewReasonForm';
 import { expect } from '@jest/globals';
 import { ionFireEvent } from '@ionic/react-test-utils';
@@ -32,7 +32,10 @@ describe('New Reason Form', () => {
     const submitButton = getByTestId('new-reason-form-submit');
     ionFireEvent.submit(submitButton!);
 
-    await new Promise(r => setTimeout(r, 1000));
+    await act(async () => {
+      await new Promise(r => setTimeout(r, 1000));
+    });
+
     expect(onCreate).not.toHaveBeenCalled();
   });
 
@@ -56,27 +59,4 @@ describe('New Reason Form', () => {
 
     expect(await findByText('This field cannot be empty.')).not.toBeNull();
   });
-
-  // it('clears the input value after submitting the form', async () => {
-  //   const onCreate = jest.fn().mockName('onCreate');
-  //   const reasonText = 'New Reason 1';
-
-  //   const { getByTestId, findByDisplayValue, container } = render(
-  //     <NewReasonForm onCreate={onCreate} />,
-  //   );
-
-  //   const inputArea = getByTestId(
-  //     'new-reason-form-text-area',
-  //   ) as HTMLIonTextareaElement;
-  //   ionFireEvent.ionChange(inputArea, reasonText);
-
-  //   expect(container.querySelector(`[value="${reasonText}"]`)).toBeDefined();
-
-  //   const submitButton = getByTestId('new-reason-form-submit');
-  //   ionFireEvent.submit(submitButton!);
-
-  //   expect(
-  //     container.querySelector(`[value="${reasonText}"]`),
-  //   ).not.toBeDefined();
-  // });
 });

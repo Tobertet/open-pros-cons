@@ -1,4 +1,10 @@
-import { IonButton, IonItem, IonLabel, IonTextarea } from '@ionic/react';
+import {
+  IonButton,
+  IonItem,
+  IonLabel,
+  IonText,
+  IonTextarea,
+} from '@ionic/react';
 import { Controller, useForm, useFormState } from 'react-hook-form';
 
 interface Props {
@@ -23,8 +29,8 @@ const NewReasonForm: React.FC<Props> = ({ onCreate }) => {
   const showError = (fieldName: keyof FormData) => {
     return (
       errors[fieldName] && (
-        <div
-          className="form-error-message-text"
+        <IonText
+          data-testid="form-error-message-text"
           style={{
             color: 'red',
             padding: 5,
@@ -34,7 +40,7 @@ const NewReasonForm: React.FC<Props> = ({ onCreate }) => {
           }}
         >
           {errors[fieldName]?.message}
-        </div>
+        </IonText>
       )
     );
   };
