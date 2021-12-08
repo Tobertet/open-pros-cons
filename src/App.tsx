@@ -27,6 +27,7 @@ import { Reason } from './components/models';
 
 const App: React.FC = () => {
   const [pros, setPros] = useState<Reason[]>([]);
+  const [cons, setCons] = useState<Reason[]>([]);
 
   return (
     <IonApp>
@@ -45,9 +46,9 @@ const App: React.FC = () => {
             <div data-testid="cons-list">
               <ReasonsList
                 title="Cons"
-                reasons={[]}
+                reasons={cons}
                 onAddReason={reason => {
-                  console.log(reason);
+                  setCons([...cons, reason]);
                 }}
               />
             </div>
