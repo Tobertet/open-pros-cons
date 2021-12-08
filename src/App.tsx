@@ -1,7 +1,7 @@
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import ProsAndConsPage from './pages/ProsAndConsPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -21,37 +21,14 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import ReasonsList from './components/ReasonsList';
-import { useState } from 'react';
-import { Reason } from './components/models';
 
 const App: React.FC = () => {
-  const [pros, setPros] = useState<Reason[]>([]);
-  const [cons, setCons] = useState<Reason[]>([]);
-
   return (
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/" exact={true}>
-            <div data-testid="pros-list">
-              <ReasonsList
-                title="Pros"
-                reasons={pros}
-                onAddReason={reason => {
-                  setPros([...pros, reason]);
-                }}
-              />
-            </div>
-            <div data-testid="cons-list">
-              <ReasonsList
-                title="Cons"
-                reasons={cons}
-                onAddReason={reason => {
-                  setCons([...cons, reason]);
-                }}
-              />
-            </div>
+            <ProsAndConsPage />
           </Route>
         </IonRouterOutlet>
       </IonReactRouter>
