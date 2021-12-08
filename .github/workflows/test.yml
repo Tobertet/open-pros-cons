@@ -1,18 +1,18 @@
-name: Test
+name: Tests
 on: [push]
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-20.04
+  run-test:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: yarn install --frozen-lockfile
-      - name: Unit Tests
-        run: yarn test --watchAll=false
-      - name: E2E Tests
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
+          # build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:8100'
+          wait-on: 'http://localhost:3000'
+      - name: Jest run
+        run: yarn test
