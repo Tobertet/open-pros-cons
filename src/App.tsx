@@ -25,13 +25,13 @@ import './theme/variables.css';
 const App: React.FC = () => {
   return (
     <IonApp>
-      <IonReactRouter>
+      {/* <IonReactRouter>
         <IonRouterOutlet>
-          <Route path="/" exact={true}>
-            <ProsAndConsPage />
-          </Route>
+          <Route path="/" exact={false}> */}
+      <ProsAndConsPage />
+      {/* </Route>
         </IonRouterOutlet>
-      </IonReactRouter>
+      </IonReactRouter> */}
     </IonApp>
   );
 };
