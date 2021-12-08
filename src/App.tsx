@@ -28,13 +28,24 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/" exact={true}>
-          <ReasonsList
-            title="Whatever"
-            reasons={[{ text: 'Sting' }]}
-            onAddReason={reason => {
-              console.log(reason);
-            }}
-          />
+          <div data-testid="pros-list">
+            <ReasonsList
+              title="Pros"
+              reasons={[]}
+              onAddReason={reason => {
+                console.log(reason);
+              }}
+            />
+          </div>
+          <div data-testid="cons-list">
+            <ReasonsList
+              title="Cons"
+              reasons={[]}
+              onAddReason={reason => {
+                console.log(reason);
+              }}
+            />
+          </div>
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

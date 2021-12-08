@@ -30,7 +30,7 @@ const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
         <IonListHeader>{title}</IonListHeader>
 
         {reasons.map((reason, index) => (
-          <IonItem detail={false} key={index}>
+          <IonItem data-testid="reason" detail={false} key={index}>
             <IonLabel className="ion-text-wrap">
               <h2>{reason.text}</h2>
             </IonLabel>
