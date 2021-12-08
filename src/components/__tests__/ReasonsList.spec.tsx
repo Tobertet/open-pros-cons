@@ -103,7 +103,7 @@ describe('ReasonsList', () => {
       ionFireEvent.submit(submitButton!);
     });
 
-    expect(onAddReason).toHaveBeenCalledWith(reasonText);
+    expect(onAddReason).toHaveBeenCalledWith({ text: reasonText });
   });
 
   it('does not call onAddReason prop when closing the form', async () => {

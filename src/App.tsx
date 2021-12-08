@@ -28,7 +28,13 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/" exact={true}>
-          <ReasonsList title="Whatever" reasons={[{ text: 'Sting' }]} />
+          <ReasonsList
+            title="Whatever"
+            reasons={[{ text: 'Sting' }]}
+            onAddReason={reason => {
+              console.log(reason);
+            }}
+          />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

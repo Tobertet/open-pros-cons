@@ -18,7 +18,7 @@ import NewReasonForm from './NewReasonForm';
 interface Props {
   title: string;
   reasons: Reason[];
-  onAddReason: (reason: string) => void;
+  onAddReason: (reason: Reason) => void;
 }
 
 const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
@@ -68,7 +68,7 @@ const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
             <NewReasonForm
               onCreate={reasonText => {
                 setIsAddingReason(false);
-                onAddReason(reasonText);
+                onAddReason({ text: reasonText });
               }}
             />
           </IonContent>
