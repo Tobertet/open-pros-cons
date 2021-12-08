@@ -2,6 +2,7 @@
   "name": "open-pros-cons",
   "version": "0.0.1",
   "private": true,
+  "homepage": "https://Tobertet.github.io/open-pros-cons",
   "dependencies": {
     "@capacitor/android": "3.3.1",
     "@capacitor/app": "1.0.6",
@@ -47,7 +48,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -69,7 +72,8 @@
   },
   "devDependencies": {
     "@capacitor/cli": "3.3.1",
-    "cypress": "^8.7.0"
+    "cypress": "^8.7.0",
+    "gh-pages": "^3.2.3"
   },
   "description": "An Ionic project"
 }
