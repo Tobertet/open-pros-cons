@@ -22,34 +22,40 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import ReasonsList from './components/ReasonsList';
+import { useState } from 'react';
+import { Reason } from './components/models';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/" exact={true}>
-          <div data-testid="pros-list">
-            <ReasonsList
-              title="Pros"
-              reasons={[]}
-              onAddReason={reason => {
-                console.log(reason);
-              }}
-            />
-          </div>
-          <div data-testid="cons-list">
-            <ReasonsList
-              title="Cons"
-              reasons={[]}
-              onAddReason={reason => {
-                console.log(reason);
-              }}
-            />
-          </div>
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const [pros, setPros] = useState<Reason[]>([]);
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route path="/" exact={true}>
+            <div data-testid="pros-list">
+              <ReasonsList
+                title="Pros"
+                reasons={pros}
+                onAddReason={reason => {
+                  setPros([...pros, reason]);
+                }}
+              />
+            </div>
+            <div data-testid="cons-list">
+              <ReasonsList
+                title="Cons"
+                reasons={[]}
+                onAddReason={reason => {
+                  console.log(reason);
+                }}
+              />
+            </div>
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

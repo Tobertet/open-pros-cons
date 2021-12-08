@@ -16,4 +16,23 @@ describe('Pros and cons list', () => {
       .find('[data-testid="reason"]')
       .should('have.length', 0);
   });
+
+  it('allows to add a pro to the list of pros', () => {
+    cy.visit('/');
+
+    const proText = 'Test pro';
+
+    cy.get('[data-testid="pros-list"]')
+      .find('[data-testid="add-reason-button"]')
+      .click();
+
+    cy.get('[data-testid="new-reason-form-text-area"]')
+      .click()
+      .wait(200)
+      .type(proText)
+      .should('have.value', proText);
+    cy.get('[data-testid="new-reason-form-submit"]').click();
+
+    cy.get('[data-testid="pros-list"]').should('contain', proText);
+  });
 });
