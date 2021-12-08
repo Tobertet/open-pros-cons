@@ -123,4 +123,10 @@ describe('ReasonsList', () => {
 
     expect(onAddReason).not.toHaveBeenCalled();
   });
+
+  it('shows the total of reasons', () => {
+    const { queryByText } = context;
+
+    expect(queryByText(3)).not.toBeNull();
+  });
 });

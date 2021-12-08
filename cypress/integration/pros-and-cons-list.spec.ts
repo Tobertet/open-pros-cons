@@ -54,4 +54,48 @@ describe('Pros and cons list', () => {
 
     cy.get('[data-testid="cons-list"]').should('contain', conText);
   });
+
+  it('shows the count of pros', () => {
+    cy.visit('/');
+
+    ['Text 1', 'Text 2', 'Text 3'].forEach((item, index) => {
+      cy.get('[data-testid="pros-list"]')
+        .find('[data-testid="add-reason-button"]')
+        .click();
+
+      cy.get('[data-testid="new-reason-form-text-area"]')
+        .click()
+        .wait(200)
+        .type(item)
+        .should('have.value', item);
+      cy.get('[data-testid="new-reason-form-submit"]').click();
+      cy.wait(200);
+
+      cy.get('[data-testid="pros-list"]')
+        .find('[data-testid="reasons-count"]')
+        .should('contain', index + 1);
+    });
+  });
+
+  it('shows the count of cons', () => {
+    cy.visit('/');
+
+    ['Text 1', 'Text 2', 'Text 3'].forEach((item, index) => {
+      cy.get('[data-testid="cons-list"]')
+        .find('[data-testid="add-reason-button"]')
+        .click();
+
+      cy.get('[data-testid="new-reason-form-text-area"]')
+        .click()
+        .wait(200)
+        .type(item)
+        .should('have.value', item);
+      cy.get('[data-testid="new-reason-form-submit"]').click();
+      cy.wait(200);
+
+      cy.get('[data-testid="cons-list"]')
+        .find('[data-testid="reasons-count"]')
+        .should('contain', index + 1);
+    });
+  });
 });

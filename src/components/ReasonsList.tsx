@@ -1,4 +1,5 @@
 import {
+  IonBadge,
   IonButton,
   IonButtons,
   IonContent,
@@ -27,7 +28,14 @@ const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
   return (
     <>
       <IonList data-testid="reasons-list">
-        <IonListHeader>{title}</IonListHeader>
+        <IonListHeader>
+          <IonItem>
+            <IonLabel>{title}</IonLabel>
+            <IonBadge slot="end" data-testid="reasons-count">
+              {reasons.length}
+            </IonBadge>
+          </IonItem>
+        </IonListHeader>
 
         {reasons.map((reason, index) => (
           <IonItem data-testid="reason" detail={false} key={index}>
