@@ -2,7 +2,7 @@
   "name": "open-pros-cons",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://Tobertet.github.io/open-pros-cons",
+  "homepage": "https://tobertet.github.io/open-pros-cons",
   "dependencies": {
     "@capacitor/android": "3.3.1",
     "@capacitor/app": "1.0.6",
