@@ -1,10 +1,15 @@
 import {
   IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
   IonItem,
   IonLabel,
   IonList,
   IonListHeader,
   IonModal,
+  IonTitle,
+  IonToolbar,
 } from '@ionic/react';
 import { useState } from 'react';
 import { Reason } from './models';
@@ -13,10 +18,10 @@ import NewReasonForm from './NewReasonForm';
 interface Props {
   title: string;
   reasons: Reason[];
-  // onAddReason: (reason: string) => void;
+  onAddReason: (reason: string) => void;
 }
 
-const ReasonsList: React.FC<Props> = ({ title, reasons }) => {
+const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
   const [isAddingReason, setIsAddingReason] = useState(false);
 
   return (
@@ -40,8 +45,34 @@ const ReasonsList: React.FC<Props> = ({ title, reasons }) => {
       >
         Add
       </IonButton>
-      <IonModal isOpen={isAddingReason} data-testid="new-reason-modal">
-        <NewReasonForm onCreate={() => {}} />
+      <IonModal
+        isOpen={isAddingReason}
+        data-testid="new-reason-modal"
+        backdropDismiss={false}
+      >
+        <>
+          <IonHeader>
+            <IonToolbar>
+              <IonTitle>Reason detail</IonTitle>
+              <IonButtons slot="end">
+                <IonButton
+                  data-testid="new-reason-modal-close-button"
+                  onClick={() => setIsAddingReason(false)}
+                >
+                  Close
+                </IonButton>
+              </IonButtons>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent>
+            <NewReasonForm
+              onCreate={reasonText => {
+                setIsAddingReason(false);
+                onAddReason(reasonText);
+              }}
+            />
+          </IonContent>
+        </>
       </IonModal>
     </>
   );

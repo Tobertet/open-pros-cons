@@ -1,4 +1,4 @@
-import { render, RenderResult, screen } from '@testing-library/react';
+import { act, render, RenderResult } from '@testing-library/react';
 import ReasonsList from '../ReasonsList';
 import { expect } from '@jest/globals';
 import { Reason } from '../models';
@@ -20,7 +20,7 @@ describe('ReasonsList', () => {
       <ReasonsList
         title="Whatever"
         reasons={reasons}
-        // onAddReason={onAddReason}
+        onAddReason={onAddReason}
       />,
     );
   });
@@ -31,7 +31,7 @@ describe('ReasonsList', () => {
     expect(queryByText('Whatever')).not.toBeNull();
   });
 
-  it('displays the reasons', () => {
+  it('displays the reasons passed as a prop', () => {
     const { queryByText } = context;
 
     expect(queryByText(reasons[0].text)).not.toBeNull();
@@ -45,7 +45,7 @@ describe('ReasonsList', () => {
     expect(queryByTestId('new-reason-modal')).toBeNull();
   });
 
-  it('shows a new reason form when clicking on the add button', () => {
+  it('shows a modal with a form when clicking on the add button', () => {
     const { queryByTestId } = context;
 
     ionFireEvent.click(queryByTestId('add-reason-button')!);
@@ -53,7 +53,74 @@ describe('ReasonsList', () => {
     expect(queryByTestId('new-reason-modal')).not.toBeNull();
   });
 
-  it('adds a reason when submiting the form', () => {});
+  it('closes the modal when submiting the form', async () => {
+    const reasonText = 'Random Text';
 
-  it('does not add a reason when cancelling the form', () => {});
+    const { getByTestId, findByTestId, queryByTestId } = context;
+
+    ionFireEvent.click(getByTestId('add-reason-button'));
+
+    expect(queryByTestId('new-reason-modal')).not.toBeNull();
+
+    await act(async () => {
+      const inputArea = await findByTestId('new-reason-form-text-area');
+      ionFireEvent.ionChange(inputArea, reasonText);
+
+      const submitButton = getByTestId('new-reason-form-submit');
+      ionFireEvent.submit(submitButton!);
+    });
+
+    expect(queryByTestId('new-reason-modal')).toBeNull();
+  });
+
+  it('closes the modal when clicking on the close modal button', async () => {
+    const { getByTestId, queryByTestId } = context;
+
+    ionFireEvent.click(getByTestId('add-reason-button'));
+
+    expect(queryByTestId('new-reason-modal')).not.toBeNull();
+
+    await act(async () => {
+      const closeModalButton = getByTestId('new-reason-modal-close-button');
+      ionFireEvent.click(closeModalButton!);
+    });
+
+    expect(queryByTestId('new-reason-modal')).toBeNull();
+  });
+
+  it('calls onAddReason prop when submiting the form with the reason text', async () => {
+    const reasonText = 'Random Text';
+
+    const { getByTestId, findByTestId } = context;
+
+    ionFireEvent.click(getByTestId('add-reason-button'));
+
+    await act(async () => {
+      const inputArea = await findByTestId('new-reason-form-text-area');
+      ionFireEvent.ionChange(inputArea, reasonText);
+
+      const submitButton = getByTestId('new-reason-form-submit');
+      ionFireEvent.submit(submitButton!);
+    });
+
+    expect(onAddReason).toHaveBeenCalledWith(reasonText);
+  });
+
+  it('does not call onAddReason prop when closing the form', async () => {
+    const reasonText = 'Random Text';
+
+    const { getByTestId, findByTestId } = context;
+
+    ionFireEvent.click(getByTestId('add-reason-button'));
+
+    await act(async () => {
+      const inputArea = await findByTestId('new-reason-form-text-area');
+      ionFireEvent.ionChange(inputArea, reasonText);
+
+      const closeModalButton = getByTestId('new-reason-modal-close-button');
+      ionFireEvent.click(closeModalButton!);
+    });
+
+    expect(onAddReason).not.toHaveBeenCalled();
+  });
 });
