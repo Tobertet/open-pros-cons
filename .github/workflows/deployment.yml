@@ -1,10 +1,8 @@
-name: CI/CD
+name: Deployment
 
 on:
   push:
-    branches: [xxx]
-  pull_request:
-    branches: [xxx]
+    branches: [master]
 
 jobs:
   build:
@@ -26,19 +24,8 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Run the tests
-        run: yarn test
-
       - name: Build
         run: yarn build
-
-      - name: Run the tests and generate coverage report
-        run: yarn test --coverage
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Deploy
         run: |
