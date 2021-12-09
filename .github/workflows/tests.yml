@@ -1,5 +1,9 @@
-name: Cypress Tests
-on: [push]
+name: Tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   install:
     name: Install & Build
@@ -24,8 +28,6 @@ jobs:
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
-        with:
-          verbose: true
 
       - run: yarn build
 
@@ -76,9 +78,6 @@ jobs:
           # Recommended: pass the GitHub token lets this action correctly
           # determine the unique run id necessary to re-run the checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: ✅ Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
 
   # ui-chrome-mobile-tests:
   #   timeout-minutes: 15
