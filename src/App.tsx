@@ -27,7 +27,7 @@ const App: React.FC = () => {
         <IonRouterOutlet>
           <Route path="/" exact={false}> */}
       <ProsAndConsPage />
-      {/* </Route>
+      {/*  </Route>
         </IonRouterOutlet>
       </IonReactRouter> */}
     </IonApp>
