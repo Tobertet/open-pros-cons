@@ -29,9 +29,6 @@ jobs:
       - name: Run the tests
         run: yarn test
 
-      - name: Build
-        run: yarn build
-
       - name: Run the tests and generate coverage report
         run: yarn test --coverage
 
