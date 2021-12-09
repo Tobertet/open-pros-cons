@@ -53,7 +53,8 @@
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "lint": "eslint . --max-warnings=0 && prettier --check \"**/**.{ts,js,tsx}\" \"**/**.{json,md,yml}\"",
-    "types": "tsc --noEmit"
+    "types": "tsc --noEmit",
+    "android:run": "PUBLIC_URL=\".\" ionic cap run android"
   },
   "eslintConfig": {
     "extends": [
