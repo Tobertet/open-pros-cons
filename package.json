@@ -48,7 +48,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "cypress open",
+    "cypress:open": "cypress open",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "lint": "eslint . --max-warnings=0 && prettier --check \"**/**.{ts,js,tsx}\" \"**/**.{json,md,yml}\"",
