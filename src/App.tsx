@@ -1,6 +1,4 @@
-import { Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonApp } from '@ionic/react';
 import ProsAndConsPage from './pages/ProsAndConsPage';
 
 /* Core CSS required for Ionic components to work properly */
@@ -25,13 +23,13 @@ import './theme/variables.css';
 const App: React.FC = () => {
   return (
     <IonApp>
-      <IonReactRouter>
+      {/* <IonReactRouter>
         <IonRouterOutlet>
-          <Route path="/" exact={true}>
-            <ProsAndConsPage />
-          </Route>
+          <Route path="/" exact={false}> */}
+      <ProsAndConsPage />
+      {/* </Route>
         </IonRouterOutlet>
-      </IonReactRouter>
+      </IonReactRouter> */}
     </IonApp>
   );
 };
