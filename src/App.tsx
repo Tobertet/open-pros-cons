@@ -1,6 +1,4 @@
-import { Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonApp } from '@ionic/react';
 import ProsAndConsPage from './pages/ProsAndConsPage';
 
 /* Core CSS required for Ionic components to work properly */
