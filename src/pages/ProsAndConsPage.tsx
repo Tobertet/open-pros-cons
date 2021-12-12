@@ -8,6 +8,7 @@ import {
 } from '@ionic/react';
 import { useState } from 'react';
 import { Reason } from '../components/models';
+import './ProsAndConsPage.css';
 
 const ProsAndConsPage: React.FC = () => {
   const [pros, setPros] = useState<Reason[]>([]);
@@ -21,23 +22,25 @@ const ProsAndConsPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <div data-testid="pros-list">
-          <ReasonsList
-            title="Pros"
-            reasons={pros}
-            onAddReason={reason => {
-              setPros([...pros, reason]);
-            }}
-          />
-        </div>
-        <div data-testid="cons-list">
-          <ReasonsList
-            title="Cons"
-            reasons={cons}
-            onAddReason={reason => {
-              setCons([...cons, reason]);
-            }}
-          />
+        <div className="pros-and-cons-grid">
+          <div data-testid="pros-list">
+            <ReasonsList
+              title="Pros"
+              reasons={pros}
+              onAddReason={reason => {
+                setPros([...pros, reason]);
+              }}
+            />
+          </div>
+          <div data-testid="cons-list">
+            <ReasonsList
+              title="Cons"
+              reasons={cons}
+              onAddReason={reason => {
+                setCons([...cons, reason]);
+              }}
+            />
+          </div>
         </div>
       </IonContent>
     </IonPage>
