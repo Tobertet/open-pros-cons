@@ -5,3 +5,7 @@
 .reasons-list {
   --ion-card-background: white;
 }
+
+.add-reason-button {
+  font-size: large;
+}

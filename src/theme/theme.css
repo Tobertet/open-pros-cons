@@ -1,0 +1,4 @@
+:root {
+  --ion-toolbar-background: var(--ion-color-dark);
+  --ion-toolbar-color: var(--ion-color-light);
+}
