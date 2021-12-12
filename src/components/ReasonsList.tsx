@@ -48,11 +48,13 @@ const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
       </IonList>
       <IonButton
         data-testid="add-reason-button"
+        class="add-reason-button"
+        shape="round"
         onClick={() => {
           setIsAddingReason(true);
         }}
       >
-        Add
+        +
       </IonButton>
       <IonModal
         isOpen={isAddingReason}

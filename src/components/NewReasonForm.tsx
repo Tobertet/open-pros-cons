@@ -1,11 +1,6 @@
-import {
-  IonButton,
-  IonItem,
-  IonLabel,
-  IonText,
-  IonTextarea,
-} from '@ionic/react';
+import { IonButton, IonItem, IonLabel, IonText, IonInput } from '@ionic/react';
 import { Controller, useForm, useFormState } from 'react-hook-form';
+import './NewReasonForm.css';
 
 interface Props {
   onCreate: (reason: string) => void;
@@ -37,6 +32,7 @@ const NewReasonForm: React.FC<Props> = ({ onCreate }) => {
             paddingLeft: 12,
             fontSize: 'smaller',
             marginTop: 0,
+            display: 'block',
           }}
         >
           {errors[fieldName]?.message}
@@ -46,14 +42,15 @@ const NewReasonForm: React.FC<Props> = ({ onCreate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="add-reason-form">
       <IonItem>
         <IonLabel position="floating">Reason</IonLabel>
         <Controller
           control={control}
           name="reasonText"
           render={({ field: { onChange, value } }) => (
-            <IonTextarea
+            <IonInput
+              type="text"
               data-testid="new-reason-form-text-area"
               onIonChange={event => onChange(event.detail.value)}
               value={value}
@@ -65,7 +62,11 @@ const NewReasonForm: React.FC<Props> = ({ onCreate }) => {
         />
       </IonItem>
       {showError('reasonText')}
-      <IonButton data-testid="new-reason-form-submit" type="submit">
+      <IonButton
+        data-testid="new-reason-form-submit"
+        className="submit-button"
+        type="submit"
+      >
         Save
       </IonButton>
     </form>
