@@ -15,6 +15,7 @@ import {
 import { useState } from 'react';
 import { Reason } from './models';
 import NewReasonForm from './NewReasonForm';
+import './ReasonsList.css';
 
 interface Props {
   title: string;
@@ -28,8 +29,8 @@ const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
   return (
     <>
       <IonList data-testid="reasons-list">
-        <IonListHeader>
-          <IonItem>
+        <IonListHeader class="ion-no-padding">
+          <IonItem class="reason-list-header">
             <IonLabel>{title}</IonLabel>
             <IonBadge slot="end" data-testid="reasons-count">
               {reasons.length}
