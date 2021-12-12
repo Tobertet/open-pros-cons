@@ -2,6 +2,8 @@ import {
   IonBadge,
   IonButton,
   IonButtons,
+  IonCard,
+  IonCardContent,
   IonContent,
   IonHeader,
   IonItem,
@@ -28,7 +30,7 @@ const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
 
   return (
     <>
-      <IonList data-testid="reasons-list">
+      <IonList data-testid="reasons-list" class="reasons-list">
         <IonListHeader class="ion-no-padding">
           <IonItem class="reason-list-header">
             <IonLabel>{title}</IonLabel>
@@ -39,11 +41,9 @@ const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
         </IonListHeader>
 
         {reasons.map((reason, index) => (
-          <IonItem data-testid="reason" detail={false} key={index}>
-            <IonLabel className="ion-text-wrap">
-              <h2>{reason.text}</h2>
-            </IonLabel>
-          </IonItem>
+          <IonCard data-testid="reason" key={index}>
+            <IonCardContent>{reason.text}</IonCardContent>
+          </IonCard>
         ))}
       </IonList>
       <IonButton

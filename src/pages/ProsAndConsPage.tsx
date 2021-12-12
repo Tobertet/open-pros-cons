@@ -23,7 +23,7 @@ const ProsAndConsPage: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <div className="pros-and-cons-grid">
-          <div data-testid="pros-list">
+          <div className="pros-list" data-testid="pros-list">
             <ReasonsList
               title="Pros"
               reasons={pros}
@@ -32,7 +32,7 @@ const ProsAndConsPage: React.FC = () => {
               }}
             />
           </div>
-          <div data-testid="cons-list">
+          <div className="cons-list" data-testid="cons-list">
             <ReasonsList
               title="Cons"
               reasons={cons}
