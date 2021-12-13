@@ -2,7 +2,7 @@
   "files": {
     "static/js/0.0a025926.chunk.js": "/open-pros-cons/static/js/0.0a025926.chunk.js",
     "static/js/0.0a025926.chunk.js.map": "/open-pros-cons/static/js/0.0a025926.chunk.js.map",
-    "main.css": "/open-pros-cons/static/css/main.1ff64b29.chunk.css",
+    "main.css": "/open-pros-cons/static/css/main.2bdb3de3.chunk.css",
     "main.js": "/open-pros-cons/static/js/main.127a3f5e.chunk.js",
     "main.js.map": "/open-pros-cons/static/js/main.127a3f5e.chunk.js.map",
     "polyfills-dom.js": "/open-pros-cons/static/js/polyfills-dom.f12cc55e.chunk.js",
@@ -124,7 +124,7 @@
     "service-worker.js": "/open-pros-cons/service-worker.js",
     "service-worker.js.map": "/open-pros-cons/service-worker.js.map",
     "static/css/4.c7310201.chunk.css.map": "/open-pros-cons/static/css/4.c7310201.chunk.css.map",
-    "static/css/main.1ff64b29.chunk.css.map": "/open-pros-cons/static/css/main.1ff64b29.chunk.css.map",
+    "static/css/main.2bdb3de3.chunk.css.map": "/open-pros-cons/static/css/main.2bdb3de3.chunk.css.map",
     "static/js/4.e449f63e.chunk.js.LICENSE.txt": "/open-pros-cons/static/js/4.e449f63e.chunk.js.LICENSE.txt",
     "static/js/53.b11f7b40.chunk.js.LICENSE.txt": "/open-pros-cons/static/js/53.b11f7b40.chunk.js.LICENSE.txt",
     "static/js/polyfills-dom.f12cc55e.chunk.js.LICENSE.txt": "/open-pros-cons/static/js/polyfills-dom.f12cc55e.chunk.js.LICENSE.txt"
@@ -133,7 +133,7 @@
     "static/js/runtime-main.fb889c7e.js",
     "static/css/4.c7310201.chunk.css",
     "static/js/4.e449f63e.chunk.js",
-    "static/css/main.1ff64b29.chunk.css",
+    "static/css/main.2bdb3de3.chunk.css",
     "static/js/main.127a3f5e.chunk.js"
   ]
 }
