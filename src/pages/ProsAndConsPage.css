@@ -1,12 +1,13 @@
 .pros-and-cons-grid {
   display: grid;
   grid-template-columns: 50% 50%;
-  min-height: stretch;
+  min-height: 100%;
   text-align: center;
 }
 
 .pros-list {
   --ion-background-color: #b5dfb1;
+  --ion-item-background: #b5dfb1;
   background: var(--ion-background-color);
   --ion-item-color: #00942a;
   --ion-item-border-color: #00942a;
@@ -19,4 +20,5 @@
   --ion-item-color: #940202;
   --ion-item-border-color: #940202;
   --ion-color-primary: #940202;
+  --ion-item-background: #ff9c9c;
 }
