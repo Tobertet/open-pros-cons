@@ -177,12 +177,12 @@ describe('Pros and cons list', () => {
     cy.get('[data-testid="new-reason-form-text-area"]')
       .click()
       .wait(200)
-      .type('Edited 1')
+      .type('{selectall}Edited 1')
       .should('have.value', 'Edited 1');
     cy.get('[data-testid="new-reason-form-submit"]').click();
     cy.wait(200);
 
-    cy.should('not.contain', 'Text 1');
-    cy.should('contain', 'Edited 1');
+    cy.get('[data-testid="pros-list"]').should('not.contain', 'Text 1');
+    cy.get('[data-testid="pros-list"]').should('contain', 'Edited 1');
   });
 });

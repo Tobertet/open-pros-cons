@@ -127,7 +127,16 @@ const ReasonsList: React.FC<Props> = ({
             <NewReasonForm
               onCreate={reasonText => {
                 setIsAddingReason(false);
-                onAddReason({ text: reasonText });
+                onAddReason({
+                  text: reasonText,
+                  id:
+                    reasons.reduce(
+                      (prev, current) => {
+                        return prev.id > current.id ? prev : current;
+                      },
+                      { id: 0 },
+                    ).id + 1,
+                });
               }}
               reason={editingReason}
               onEdit={reason => {

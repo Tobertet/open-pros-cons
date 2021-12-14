@@ -71,7 +71,7 @@ describe('New Reason Form', () => {
       <NewReasonForm
         onCreate={onCreate}
         onEdit={onEdit}
-        reason={{ text: 'Old text' }}
+        reason={{ text: 'Old text', id: 1 }}
       />,
     );
 
@@ -83,7 +83,7 @@ describe('New Reason Form', () => {
     ionFireEvent.submit(submitButton!);
 
     await waitFor(async () => {
-      expect(onEdit).toHaveBeenCalledWith({ text: reasonText });
+      expect(onEdit).toHaveBeenCalledWith({ text: reasonText, id: 1 });
       expect(onCreate).not.toHaveBeenCalled();
     });
   });

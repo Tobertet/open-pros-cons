@@ -25,7 +25,7 @@ const NewReasonForm: React.FC<Props> = ({ onCreate, reason, onEdit }) => {
     if (!reason) {
       onCreate(data.reasonText);
     } else {
-      onEdit({ text: data.reasonText });
+      onEdit({ text: data.reasonText, id: reason.id });
     }
   };
 

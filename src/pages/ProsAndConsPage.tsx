@@ -41,6 +41,13 @@ const ProsAndConsPage: React.FC = () => {
                   pros.filter(reason => reason.text !== reasonToDelete.text),
                 );
               }}
+              onEditReason={editedReason => {
+                setPros(
+                  pros.map(pro =>
+                    pro.id === editedReason.id ? { ...editedReason } : pro,
+                  ),
+                );
+              }}
             />
           </div>
           <div className="cons-list" data-testid="cons-list">
@@ -60,6 +67,9 @@ const ProsAndConsPage: React.FC = () => {
                 setCons(
                   cons.filter(reason => reason.text !== reasonToDelete.text),
                 );
+              }}
+              onEditReason={editedReason => {
+                console.log(editedReason);
               }}
             />
           </div>

@@ -5,9 +5,9 @@ import { ionFireEvent } from '@ionic/react-test-utils';
 
 describe('ReasonsList', () => {
   const reasons: Reason[] = [
-    { text: 'Reason 1' },
-    { text: 'Reason 2' },
-    { text: 'Reason 3' },
+    { text: 'Reason 1', id: 1 },
+    { text: 'Reason 2', id: 2 },
+    { text: 'Reason 3', id: 3 },
   ];
   let onAddReason: jest.Mock;
   let onDeleteReason: jest.Mock;
@@ -94,7 +94,7 @@ describe('ReasonsList', () => {
     expect(queryByTestId('new-reason-modal')).toBeNull();
   });
 
-  it('calls onAddReason prop when submiting the form with the reason text', async () => {
+  it('calls onAddReason prop when submiting the form when no reason prop is passed', async () => {
     const reasonText = 'Random Text';
 
     const { getByTestId, findByTestId } = context;
@@ -109,7 +109,10 @@ describe('ReasonsList', () => {
       ionFireEvent.submit(submitButton!);
     });
 
-    expect(onAddReason).toHaveBeenCalledWith({ text: reasonText });
+    expect(onAddReason).toHaveBeenCalledWith({
+      text: reasonText,
+      id: 4,
+    });
   });
 
   it('does not call onAddReason prop when closing the form', async () => {
@@ -173,6 +176,9 @@ describe('ReasonsList', () => {
       ionFireEvent.submit(submitButton!);
     });
 
-    expect(onEditReason).toHaveBeenCalledWith({ text: editedReasonText });
+    expect(onEditReason).toHaveBeenCalledWith({
+      text: editedReasonText,
+      id: 1,
+    } as Reason);
   });
 });
