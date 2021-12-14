@@ -69,7 +69,11 @@ const ProsAndConsPage: React.FC = () => {
                 );
               }}
               onEditReason={editedReason => {
-                console.log(editedReason);
+                setCons(
+                  cons.map(con =>
+                    con.id === editedReason.id ? { ...editedReason } : con,
+                  ),
+                );
               }}
             />
           </div>
