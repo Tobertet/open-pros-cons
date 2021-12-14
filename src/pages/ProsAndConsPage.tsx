@@ -30,6 +30,12 @@ const ProsAndConsPage: React.FC = () => {
               onAddReason={reason => {
                 setPros([...pros, reason]);
               }}
+              onMoveReason={(from: number, to: number) => {
+                let reorderedReasons = [...pros];
+                const reasonMoved = reorderedReasons.splice(from, 1)[0];
+                reorderedReasons.splice(to, 0, reasonMoved);
+                setPros(reorderedReasons);
+              }}
             />
           </div>
           <div className="cons-list" data-testid="cons-list">
@@ -38,6 +44,12 @@ const ProsAndConsPage: React.FC = () => {
               reasons={cons}
               onAddReason={reason => {
                 setCons([...cons, reason]);
+              }}
+              onMoveReason={(from: number, to: number) => {
+                let reorderedReasons = [...cons];
+                const reasonMoved = reorderedReasons.splice(from, 1)[0];
+                reorderedReasons.splice(to, 0, reasonMoved);
+                setCons(reorderedReasons);
               }}
             />
           </div>

@@ -1,3 +1,4 @@
+import { ItemReorderEventDetail } from '@ionic/core';
 import {
   IonBadge,
   IonButton,
@@ -11,6 +12,8 @@ import {
   IonList,
   IonListHeader,
   IonModal,
+  IonReorder,
+  IonReorderGroup,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
@@ -23,10 +26,21 @@ interface Props {
   title: string;
   reasons: Reason[];
   onAddReason: (reason: Reason) => void;
+  onMoveReason: (from: number, to: number) => void;
 }
 
-const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
+const ReasonsList: React.FC<Props> = ({
+  title,
+  reasons,
+  onAddReason,
+  onMoveReason,
+}) => {
   const [isAddingReason, setIsAddingReason] = useState(false);
+
+  const moveReason = (event: CustomEvent<ItemReorderEventDetail>) => {
+    event.detail.complete();
+    onMoveReason(event.detail.from, event.detail.to);
+  };
 
   return (
     <>
@@ -40,11 +54,15 @@ const ReasonsList: React.FC<Props> = ({ title, reasons, onAddReason }) => {
           </IonItem>
         </IonListHeader>
 
-        {reasons.map((reason, index) => (
-          <IonCard data-testid="reason" key={index}>
-            <IonCardContent>{reason.text}</IonCardContent>
-          </IonCard>
-        ))}
+        <IonReorderGroup disabled={false} onIonItemReorder={moveReason}>
+          {reasons.map((reason, index) => (
+            <IonReorder key={reason.text}>
+              <IonCard data-testid="reason">
+                <IonCardContent>{reason.text}</IonCardContent>
+              </IonCard>
+            </IonReorder>
+          ))}
+        </IonReorderGroup>
       </IonList>
       <IonButton
         data-testid="add-reason-button"

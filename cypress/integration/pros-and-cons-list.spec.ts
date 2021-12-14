@@ -98,4 +98,12 @@ describe('Pros and cons list', () => {
         .should('contain', index + 1);
     });
   });
+
+  it('allows to reorder pros', () => {
+    // Could not be tested
+  });
+
+  it('allows to reorder cons', () => {
+    // Could not be tested
+  });
 });
