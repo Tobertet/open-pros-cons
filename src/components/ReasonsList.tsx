@@ -31,6 +31,7 @@ interface Props {
   onAddReason: (reason: Reason) => void;
   onMoveReason: (from: number, to: number) => void;
   onDeleteReason: (reason: Reason) => void;
+  onEditReason: (reason: Reason) => void;
 }
 
 const ReasonsList: React.FC<Props> = ({
@@ -39,6 +40,7 @@ const ReasonsList: React.FC<Props> = ({
   onAddReason,
   onMoveReason,
   onDeleteReason,
+  onEditReason,
 }) => {
   const [isAddingReason, setIsAddingReason] = useState(false);
   const [editingReason, setEditingReason] = useState<Reason>();
@@ -77,7 +79,8 @@ const ReasonsList: React.FC<Props> = ({
                   size="small"
                   color="danger"
                   data-testid="delete-button"
-                  onClick={() => {
+                  onClick={event => {
+                    event.stopPropagation();
                     onDeleteReason(reason);
                   }}
                 >
@@ -110,7 +113,10 @@ const ReasonsList: React.FC<Props> = ({
               <IonButtons slot="end">
                 <IonButton
                   data-testid="new-reason-modal-close-button"
-                  onClick={() => setIsAddingReason(false)}
+                  onClick={() => {
+                    setIsAddingReason(false);
+                    setEditingReason(undefined);
+                  }}
                 >
                   Close
                 </IonButton>
@@ -124,6 +130,10 @@ const ReasonsList: React.FC<Props> = ({
                 onAddReason({ text: reasonText });
               }}
               reason={editingReason}
+              onEdit={reason => {
+                setEditingReason(undefined);
+                onEditReason(reason);
+              }}
             />
           </IonContent>
         </>

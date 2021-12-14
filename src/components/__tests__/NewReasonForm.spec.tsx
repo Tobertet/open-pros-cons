@@ -5,11 +5,13 @@ import { ionFireEvent } from '@ionic/react-test-utils';
 
 describe('New Reason Form', () => {
   let onCreate: jest.Mock;
+  let onEdit: jest.Mock;
   let context: RenderResult;
 
   beforeEach(() => {
     onCreate = jest.fn().mockName('onCreate');
-    context = render(<NewReasonForm onCreate={onCreate} />);
+    onEdit = jest.fn().mockName('onEdit');
+    context = render(<NewReasonForm onCreate={onCreate} onEdit={onEdit} />);
   });
 
   it('calls onCreate prop when the form is submitted and valid', async () => {
@@ -58,5 +60,31 @@ describe('New Reason Form', () => {
     ionFireEvent.submit(submitButton!);
 
     expect(await findByText('This field cannot be empty.')).not.toBeNull();
+  });
+
+  it('calls onEdit prop when the form is submitted, valid, and has a reason prop', async () => {
+    const reasonText = 'New Reason 1';
+
+    context.unmount();
+
+    context = render(
+      <NewReasonForm
+        onCreate={onCreate}
+        onEdit={onEdit}
+        reason={{ text: 'Old text' }}
+      />,
+    );
+
+    const { getByTestId } = context;
+
+    const inputArea = getByTestId('new-reason-form-text-area');
+    ionFireEvent.ionChange(inputArea, reasonText);
+    const submitButton = getByTestId('new-reason-form-submit');
+    ionFireEvent.submit(submitButton!);
+
+    await waitFor(async () => {
+      expect(onEdit).toHaveBeenCalledWith({ text: reasonText });
+      expect(onCreate).not.toHaveBeenCalled();
+    });
   });
 });

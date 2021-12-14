@@ -5,6 +5,7 @@ import './NewReasonForm.css';
 
 interface Props {
   onCreate: (reason: string) => void;
+  onEdit: (reason: Reason) => void;
   reason?: Reason;
 }
 
@@ -12,7 +13,7 @@ interface FormData {
   reasonText: string;
 }
 
-const NewReasonForm: React.FC<Props> = ({ onCreate, reason }) => {
+const NewReasonForm: React.FC<Props> = ({ onCreate, reason, onEdit }) => {
   const { handleSubmit, control } = useForm<FormData>({
     mode: 'onChange',
     defaultValues: { reasonText: reason?.text },
@@ -21,7 +22,11 @@ const NewReasonForm: React.FC<Props> = ({ onCreate, reason }) => {
   const { errors } = useFormState<FormData>({ control });
 
   const onSubmit = (data: FormData) => {
-    onCreate(data.reasonText);
+    if (!reason) {
+      onCreate(data.reasonText);
+    } else {
+      onEdit({ text: data.reasonText });
+    }
   };
 
   const showError = (fieldName: keyof FormData) => {

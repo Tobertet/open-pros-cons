@@ -11,11 +11,13 @@ describe('ReasonsList', () => {
   ];
   let onAddReason: jest.Mock;
   let onDeleteReason: jest.Mock;
+  let onEditReason: jest.Mock;
   let context: RenderResult;
 
   beforeEach(() => {
     onAddReason = jest.fn().mockName('onAddReason');
     onDeleteReason = jest.fn().mockName('onDeleteReason');
+    onEditReason = jest.fn().mockName('onEditReason');
 
     context = render(
       <ReasonsList
@@ -24,6 +26,7 @@ describe('ReasonsList', () => {
         onAddReason={onAddReason}
         onMoveReason={() => {}}
         onDeleteReason={onDeleteReason}
+        onEditReason={onEditReason}
       />,
     );
   });
@@ -154,11 +157,22 @@ describe('ReasonsList', () => {
     ).toBe('Reason 1');
   });
 
-  it('allows to rename a reason', () => {
-    const { queryAllByTestId } = context;
+  it('allows to rename a reason', async () => {
+    const { queryAllByTestId, findByTestId, getByTestId } = context;
+    const editedReasonText = 'Edited 1';
 
     act(() => {
       ionFireEvent.click(queryAllByTestId('reason')![0]);
     });
+
+    await act(async () => {
+      const inputArea = await findByTestId('new-reason-form-text-area');
+      ionFireEvent.ionChange(inputArea, editedReasonText);
+
+      const submitButton = getByTestId('new-reason-form-submit');
+      ionFireEvent.submit(submitButton!);
+    });
+
+    expect(onEditReason).toHaveBeenCalledWith({ text: editedReasonText });
   });
 });
