@@ -2,9 +2,9 @@
   "files": {
     "static/js/0.459bb748.chunk.js": "/open-pros-cons/static/js/0.459bb748.chunk.js",
     "static/js/0.459bb748.chunk.js.map": "/open-pros-cons/static/js/0.459bb748.chunk.js.map",
-    "main.css": "/open-pros-cons/static/css/main.afed0454.chunk.css",
-    "main.js": "/open-pros-cons/static/js/main.0bca50b0.chunk.js",
-    "main.js.map": "/open-pros-cons/static/js/main.0bca50b0.chunk.js.map",
+    "main.css": "/open-pros-cons/static/css/main.6e7da83d.chunk.css",
+    "main.js": "/open-pros-cons/static/js/main.a8757e52.chunk.js",
+    "main.js.map": "/open-pros-cons/static/js/main.a8757e52.chunk.js.map",
     "polyfills-dom.js": "/open-pros-cons/static/js/polyfills-dom.367edc55.chunk.js",
     "polyfills-dom.js.map": "/open-pros-cons/static/js/polyfills-dom.367edc55.chunk.js.map",
     "runtime-main.js": "/open-pros-cons/static/js/runtime-main.4acad804.js",
@@ -124,7 +124,7 @@
     "service-worker.js": "/open-pros-cons/service-worker.js",
     "service-worker.js.map": "/open-pros-cons/service-worker.js.map",
     "static/css/4.c7310201.chunk.css.map": "/open-pros-cons/static/css/4.c7310201.chunk.css.map",
-    "static/css/main.afed0454.chunk.css.map": "/open-pros-cons/static/css/main.afed0454.chunk.css.map",
+    "static/css/main.6e7da83d.chunk.css.map": "/open-pros-cons/static/css/main.6e7da83d.chunk.css.map",
     "static/js/4.000761c4.chunk.js.LICENSE.txt": "/open-pros-cons/static/js/4.000761c4.chunk.js.LICENSE.txt",
     "static/js/53.213cbae6.chunk.js.LICENSE.txt": "/open-pros-cons/static/js/53.213cbae6.chunk.js.LICENSE.txt",
     "static/js/polyfills-dom.367edc55.chunk.js.LICENSE.txt": "/open-pros-cons/static/js/polyfills-dom.367edc55.chunk.js.LICENSE.txt"
@@ -133,7 +133,7 @@
     "static/js/runtime-main.4acad804.js",
     "static/css/4.c7310201.chunk.css",
     "static/js/4.000761c4.chunk.js",
-    "static/css/main.afed0454.chunk.css",
-    "static/js/main.0bca50b0.chunk.js"
+    "static/css/main.6e7da83d.chunk.css",
+    "static/js/main.a8757e52.chunk.js"
   ]
 }
