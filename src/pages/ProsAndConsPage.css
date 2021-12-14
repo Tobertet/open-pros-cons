@@ -16,9 +16,13 @@
 
 .cons-list {
   --ion-background-color: #ff9c9c;
+  --ion-item-background: #ff9c9c;
   background: var(--ion-background-color);
   --ion-item-color: #940202;
   --ion-item-border-color: #940202;
   --ion-color-primary: #940202;
-  --ion-item-background: #ff9c9c;
+}
+
+.reason {
+  --ion-item-color: var(--ion-color-dark);
 }
