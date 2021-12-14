@@ -36,6 +36,11 @@ const ProsAndConsPage: React.FC = () => {
                 reorderedReasons.splice(to, 0, reasonMoved);
                 setPros(reorderedReasons);
               }}
+              onDeleteReason={reasonToDelete => {
+                setPros(
+                  pros.filter(reason => reason.text !== reasonToDelete.text),
+                );
+              }}
             />
           </div>
           <div className="cons-list" data-testid="cons-list">
@@ -51,6 +56,7 @@ const ProsAndConsPage: React.FC = () => {
                 reorderedReasons.splice(to, 0, reasonMoved);
                 setCons(reorderedReasons);
               }}
+              onDeleteReason={() => {}}
             />
           </div>
         </div>

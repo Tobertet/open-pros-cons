@@ -11,16 +11,20 @@ describe('ReasonsList', () => {
     { text: 'Reason 3' },
   ];
   let onAddReason: jest.Mock;
+  let onDeleteReason: jest.Mock;
   let context: RenderResult;
 
   beforeEach(() => {
     onAddReason = jest.fn().mockName('onAddReason');
+    onDeleteReason = jest.fn().mockName('onDeleteReason');
 
     context = render(
       <ReasonsList
         title="Whatever"
         reasons={reasons}
         onAddReason={onAddReason}
+        onMoveReason={() => {}}
+        onDeleteReason={onDeleteReason}
       />,
     );
   });
@@ -128,5 +132,15 @@ describe('ReasonsList', () => {
     const { queryByText } = context;
 
     expect(queryByText(3)).not.toBeNull();
+  });
+
+  it('allows to remove a reason', () => {
+    const { queryByText, queryAllByTestId } = context;
+
+    act(() => {
+      ionFireEvent.click(queryAllByTestId('delete-button')![0]);
+    });
+
+    expect(onDeleteReason).toHaveBeenCalledWith(reasons[0]);
   });
 });

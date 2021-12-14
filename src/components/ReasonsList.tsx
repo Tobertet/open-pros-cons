@@ -30,6 +30,7 @@ interface Props {
   reasons: Reason[];
   onAddReason: (reason: Reason) => void;
   onMoveReason: (from: number, to: number) => void;
+  onDeleteReason: (reason: Reason) => void;
 }
 
 const ReasonsList: React.FC<Props> = ({
@@ -37,6 +38,7 @@ const ReasonsList: React.FC<Props> = ({
   reasons,
   onAddReason,
   onMoveReason,
+  onDeleteReason,
 }) => {
   const [isAddingReason, setIsAddingReason] = useState(false);
 
@@ -66,8 +68,9 @@ const ReasonsList: React.FC<Props> = ({
                 <IonButton
                   size="small"
                   color="danger"
+                  data-testid="delete-button"
                   onClick={() => {
-                    console.log('asd');
+                    onDeleteReason(reason);
                   }}
                 >
                   <IonIcon icon={trashOutline} />
