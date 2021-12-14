@@ -107,7 +107,7 @@ describe('Pros and cons list', () => {
     // Could not be tested
   });
 
-  it.only('allows to delete a pro', () => {
+  it('allows to delete a pro', () => {
     cy.visit('/');
 
     ['Text 1', 'Text 2'].forEach((item, index) => {
@@ -133,6 +133,27 @@ describe('Pros and cons list', () => {
   });
 
   it('allows to delete a con', () => {
-    // Could not be tested
+    cy.visit('/');
+
+    ['Text 1', 'Text 2'].forEach((item, index) => {
+      cy.get('[data-testid="cons-list"]')
+        .find('[data-testid="add-reason-button"]')
+        .click();
+
+      cy.get('[data-testid="new-reason-form-text-area"]')
+        .click()
+        .wait(200)
+        .type(item)
+        .should('have.value', item);
+      cy.get('[data-testid="new-reason-form-submit"]').click();
+      cy.wait(200);
+    });
+
+    cy.get('[data-testid="cons-list"] [data-testid="delete-button"]')
+      .first()
+      .click();
+
+    cy.get('[data-testid="cons-list"]').should('not.contain', 'Text 1');
+    cy.should('contain', 'Text 2');
   });
 });

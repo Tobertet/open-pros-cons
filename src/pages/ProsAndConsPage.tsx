@@ -56,7 +56,11 @@ const ProsAndConsPage: React.FC = () => {
                 reorderedReasons.splice(to, 0, reasonMoved);
                 setCons(reorderedReasons);
               }}
-              onDeleteReason={() => {}}
+              onDeleteReason={reasonToDelete => {
+                setCons(
+                  cons.filter(reason => reason.text !== reasonToDelete.text),
+                );
+              }}
             />
           </div>
         </div>
