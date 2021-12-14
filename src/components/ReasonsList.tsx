@@ -73,7 +73,7 @@ const ReasonsList: React.FC<Props> = ({
               }}
             >
               <IonCardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <IonReorder></IonReorder>
+                <IonReorder style={{ cursor: 'pointer' }}></IonReorder>
                 <IonText style={{ width: '100%' }}>{reason.text}</IonText>
                 <IonButton
                   size="small"

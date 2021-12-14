@@ -9,3 +9,7 @@
 .add-reason-button {
   font-size: large;
 }
+
+.reason {
+  cursor: text;
+}
