@@ -7,6 +7,7 @@ import {
   IonCardContent,
   IonContent,
   IonHeader,
+  IonIcon,
   IonItem,
   IonLabel,
   IonList,
@@ -14,6 +15,7 @@ import {
   IonModal,
   IonReorder,
   IonReorderGroup,
+  IonText,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
@@ -21,6 +23,7 @@ import { useState } from 'react';
 import { Reason } from './models';
 import NewReasonForm from './NewReasonForm';
 import './ReasonsList.css';
+import { trashOutline } from 'ionicons/icons';
 
 interface Props {
   title: string;
@@ -56,11 +59,21 @@ const ReasonsList: React.FC<Props> = ({
 
         <IonReorderGroup disabled={false} onIonItemReorder={moveReason}>
           {reasons.map((reason, index) => (
-            <IonReorder key={reason.text}>
-              <IonCard data-testid="reason">
-                <IonCardContent>{reason.text}</IonCardContent>
-              </IonCard>
-            </IonReorder>
+            <IonCard data-testid="reason" key={reason.text}>
+              <IonCardContent style={{ display: 'flex', alignItems: 'center' }}>
+                <IonReorder></IonReorder>
+                <IonText style={{ width: '100%' }}>{reason.text}</IonText>
+                <IonButton
+                  size="small"
+                  color="danger"
+                  onClick={() => {
+                    console.log('asd');
+                  }}
+                >
+                  <IonIcon icon={trashOutline} />
+                </IonButton>
+              </IonCardContent>
+            </IonCard>
           ))}
         </IonReorderGroup>
       </IonList>
