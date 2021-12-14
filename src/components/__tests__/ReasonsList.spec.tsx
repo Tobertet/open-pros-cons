@@ -1,6 +1,5 @@
 import { act, render, RenderResult } from '@testing-library/react';
 import ReasonsList from '../ReasonsList';
-import { expect } from '@jest/globals';
 import { Reason } from '../models';
 import { ionFireEvent } from '@ionic/react-test-utils';
 
@@ -135,12 +134,31 @@ describe('ReasonsList', () => {
   });
 
   it('allows to remove a reason', () => {
-    const { queryByText, queryAllByTestId } = context;
+    const { queryAllByTestId } = context;
 
     act(() => {
       ionFireEvent.click(queryAllByTestId('delete-button')![0]);
     });
 
     expect(onDeleteReason).toHaveBeenCalledWith(reasons[0]);
+  });
+
+  it('shows a modal with a filled form when clicking on a reason card', () => {
+    const { queryAllByTestId, queryByTestId } = context;
+
+    ionFireEvent.click(queryAllByTestId('reason')![0]);
+
+    expect(queryByTestId('new-reason-modal')).not.toBeNull();
+    expect(
+      queryByTestId('new-reason-form-text-area')!.getAttribute('value'),
+    ).toBe('Reason 1');
+  });
+
+  it('allows to rename a reason', () => {
+    const { queryAllByTestId } = context;
+
+    act(() => {
+      ionFireEvent.click(queryAllByTestId('reason')![0]);
+    });
   });
 });

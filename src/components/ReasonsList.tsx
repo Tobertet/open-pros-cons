@@ -41,6 +41,7 @@ const ReasonsList: React.FC<Props> = ({
   onDeleteReason,
 }) => {
   const [isAddingReason, setIsAddingReason] = useState(false);
+  const [editingReason, setEditingReason] = useState<Reason>();
 
   const moveReason = (event: CustomEvent<ItemReorderEventDetail>) => {
     event.detail.complete();
@@ -61,7 +62,14 @@ const ReasonsList: React.FC<Props> = ({
 
         <IonReorderGroup disabled={false} onIonItemReorder={moveReason}>
           {reasons.map((reason, index) => (
-            <IonCard data-testid="reason" className="reason" key={reason.text}>
+            <IonCard
+              data-testid="reason"
+              className="reason"
+              key={reason.text}
+              onClick={() => {
+                setEditingReason(reason);
+              }}
+            >
               <IonCardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <IonReorder></IonReorder>
                 <IonText style={{ width: '100%' }}>{reason.text}</IonText>
@@ -91,7 +99,7 @@ const ReasonsList: React.FC<Props> = ({
         +
       </IonButton>
       <IonModal
-        isOpen={isAddingReason}
+        isOpen={isAddingReason || !!editingReason}
         data-testid="new-reason-modal"
         backdropDismiss={false}
       >
@@ -115,6 +123,7 @@ const ReasonsList: React.FC<Props> = ({
                 setIsAddingReason(false);
                 onAddReason({ text: reasonText });
               }}
+              reason={editingReason}
             />
           </IonContent>
         </>

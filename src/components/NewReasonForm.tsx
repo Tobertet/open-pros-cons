@@ -1,18 +1,21 @@
 import { IonButton, IonItem, IonLabel, IonText, IonInput } from '@ionic/react';
 import { Controller, useForm, useFormState } from 'react-hook-form';
+import { Reason } from './models';
 import './NewReasonForm.css';
 
 interface Props {
   onCreate: (reason: string) => void;
+  reason?: Reason;
 }
 
 interface FormData {
   reasonText: string;
 }
 
-const NewReasonForm: React.FC<Props> = ({ onCreate }) => {
+const NewReasonForm: React.FC<Props> = ({ onCreate, reason }) => {
   const { handleSubmit, control } = useForm<FormData>({
     mode: 'onChange',
+    defaultValues: { reasonText: reason?.text },
   });
 
   const { errors } = useFormState<FormData>({ control });

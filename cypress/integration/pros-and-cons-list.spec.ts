@@ -156,4 +156,33 @@ describe('Pros and cons list', () => {
     cy.get('[data-testid="cons-list"]').should('not.contain', 'Text 1');
     cy.should('contain', 'Text 2');
   });
+
+  it.only('allows to change the text of a pro', () => {
+    cy.visit('/');
+
+    cy.get('[data-testid="pros-list"]')
+      .find('[data-testid="add-reason-button"]')
+      .click();
+
+    cy.get('[data-testid="new-reason-form-text-area"]')
+      .click()
+      .wait(200)
+      .type('Text 1')
+      .should('have.value', 'Text 1');
+    cy.get('[data-testid="new-reason-form-submit"]').click();
+    cy.wait(200);
+
+    cy.get('[data-testid="pros-list"] [data-testid="reason"]').click();
+
+    cy.get('[data-testid="new-reason-form-text-area"]')
+      .click()
+      .wait(200)
+      .type('Edited 1')
+      .should('have.value', 'Edited 1');
+    cy.get('[data-testid="new-reason-form-submit"]').click();
+    cy.wait(200);
+
+    cy.should('not.contain', 'Text 1');
+    cy.should('contain', 'Edited 1');
+  });
 });
