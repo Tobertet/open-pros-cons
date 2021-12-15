@@ -1,5 +1,9 @@
 # open-pros-cons
+
 A simple pros and cons app for android and web, with no adds, trackers nor malware. [Free as in freedom](https://www.gnu.org/philosophy/free-sw.html).
+
+<a  href="https://tobertet.github.io/open-pros-cons" alt="Link to the application">
+<img src="https://tobertet.github.io/open-pros-cons/assets/Screenshot.png" alt="Screenshot" width="800"> </a>
 
 [Web application](https://tobertet.github.io/open-pros-cons)
 
@@ -26,7 +30,7 @@ Run the command `yarn build` and the web application will be available under the
 
 ### Android
 
-*Requires Ionic CLI and Android Studio.*
+_Requires Ionic CLI and Android Studio._
 
 Run the command `ionic cap build android` and the android project will be available under the `android` directory.
 
@@ -34,7 +38,7 @@ If you only want to run the app, you can run the command `ionic cap run android`
 
 ### iOS
 
-*Requires Ionic CLI, XCode and a Mac machine.*
+_Requires Ionic CLI, XCode and a Mac machine._
 
 Run the command `ionic cap build ios` and the ios project will be available under the `ios` directory.
 
@@ -64,7 +68,7 @@ Shows the test coverage for the unit tests.
 
 ### `yarn build`
 
-Builds the *web app* for production to the `build` folder.\
+Builds the _web app_ for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
