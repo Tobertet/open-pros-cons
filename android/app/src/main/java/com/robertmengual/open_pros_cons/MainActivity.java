@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.robertmengual.open_pros_cons;
 
 import com.getcapacitor.BridgeActivity;
 

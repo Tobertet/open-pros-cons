@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'open-pros-cons',
+  appId: 'com.robertmengual.open_pros_cons',
+  appName: 'Open Pros & Cons',
   webDir: 'build',
   bundledWebRuntime: false,
 };
