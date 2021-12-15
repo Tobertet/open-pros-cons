@@ -3,8 +3,8 @@
     "static/js/0.459bb748.chunk.js": "/open-pros-cons/static/js/0.459bb748.chunk.js",
     "static/js/0.459bb748.chunk.js.map": "/open-pros-cons/static/js/0.459bb748.chunk.js.map",
     "main.css": "/open-pros-cons/static/css/main.9e98e40e.chunk.css",
-    "main.js": "/open-pros-cons/static/js/main.a8757e52.chunk.js",
-    "main.js.map": "/open-pros-cons/static/js/main.a8757e52.chunk.js.map",
+    "main.js": "/open-pros-cons/static/js/main.14ab6827.chunk.js",
+    "main.js.map": "/open-pros-cons/static/js/main.14ab6827.chunk.js.map",
     "polyfills-dom.js": "/open-pros-cons/static/js/polyfills-dom.367edc55.chunk.js",
     "polyfills-dom.js.map": "/open-pros-cons/static/js/polyfills-dom.367edc55.chunk.js.map",
     "runtime-main.js": "/open-pros-cons/static/js/runtime-main.4acad804.js",
@@ -134,6 +134,6 @@
     "static/css/4.c7310201.chunk.css",
     "static/js/4.000761c4.chunk.js",
     "static/css/main.9e98e40e.chunk.css",
-    "static/js/main.a8757e52.chunk.js"
+    "static/js/main.14ab6827.chunk.js"
   ]
 }
