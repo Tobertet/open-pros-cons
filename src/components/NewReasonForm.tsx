@@ -59,7 +59,7 @@ const NewReasonForm: React.FC<Props> = ({ onCreate, reason, onEdit }) => {
           render={({ field: { onChange, value } }) => (
             <IonInput
               type="text"
-              autoCapitalize="sentences"
+              autocapitalize="sentences"
               data-testid="new-reason-form-text-area"
               onIonChange={event => onChange(event.detail.value)}
               value={value}
