@@ -181,4 +181,26 @@ describe('ReasonsList', () => {
       id: 1,
     } as Reason);
   });
+
+  it('does not throw an error when two reasons have the same key', () => {
+    context.unmount();
+
+    console.error = jest.fn();
+
+    render(
+      <ReasonsList
+        title="Whatever"
+        reasons={[
+          { id: 1, text: 'Repeated Text' },
+          { id: 2, text: 'Repeated Text' },
+        ]}
+        onAddReason={onAddReason}
+        onMoveReason={() => {}}
+        onDeleteReason={onDeleteReason}
+        onEditReason={onEditReason}
+      />,
+    );
+
+    expect(console.error).not.toHaveBeenCalled();
+  });
 });

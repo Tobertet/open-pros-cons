@@ -67,7 +67,7 @@ const ReasonsList: React.FC<Props> = ({
             <IonCard
               data-testid="reason"
               className="reason"
-              key={reason.text}
+              key={reason.id}
               onClick={() => {
                 setEditingReason(reason);
               }}
