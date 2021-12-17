@@ -37,9 +37,7 @@ const ProsAndConsPage: React.FC = () => {
                 setPros(reorderedReasons);
               }}
               onDeleteReason={reasonToDelete => {
-                setPros(
-                  pros.filter(reason => reason.text !== reasonToDelete.text),
-                );
+                setPros(pros.filter(reason => reason.id !== reasonToDelete.id));
               }}
               onEditReason={editedReason => {
                 setPros(
@@ -64,9 +62,7 @@ const ProsAndConsPage: React.FC = () => {
                 setCons(reorderedReasons);
               }}
               onDeleteReason={reasonToDelete => {
-                setCons(
-                  cons.filter(reason => reason.text !== reasonToDelete.text),
-                );
+                setCons(cons.filter(reason => reason.id !== reasonToDelete.id));
               }}
               onEditReason={editedReason => {
                 setCons(
