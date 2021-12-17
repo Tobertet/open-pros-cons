@@ -1,6 +1,6 @@
 {
   "name": "open-pros-cons",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://tobertet.github.io/open-pros-cons",
   "dependencies": {
@@ -80,5 +80,5 @@
     "gh-pages": "^3.2.3",
     "prettier": "^2.5.1"
   },
-  "description": "An Ionic project"
+  "description": "A simple pros and cons application free of malware, trackers and ads."
 }
