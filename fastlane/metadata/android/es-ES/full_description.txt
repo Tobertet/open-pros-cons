@@ -1,0 +1,7 @@
+Con Open Pros & Cons podrás crear todos los argumentos y listas de pros y contras que necesites para hacer más fácil la toma de decisiones.
+
+No te preocupes por anuncios, trackers o malware porque no vas a encontrar ninguno en esta aplicación.
+
+Open Pros & Cons ha sido distribuida utilizando la licencia GPL y es totalmente gratuita y libre.
+
+Echa un ojo al código y envíanos todas tus sugerencias y contribuciones en la siguiente URL https://github.com/Tobertet/open-pros-cons
