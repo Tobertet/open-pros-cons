@@ -9,7 +9,7 @@
     "polyfills-dom.js.map": "/open-pros-cons/static/js/polyfills-dom.367edc55.chunk.js.map",
     "runtime-main.js": "/open-pros-cons/static/js/runtime-main.4acad804.js",
     "runtime-main.js.map": "/open-pros-cons/static/js/runtime-main.4acad804.js.map",
-    "static/css/4.c7310201.chunk.css": "/open-pros-cons/static/css/4.c7310201.chunk.css",
+    "static/css/4.532f36fa.chunk.css": "/open-pros-cons/static/css/4.532f36fa.chunk.css",
     "static/js/4.000761c4.chunk.js": "/open-pros-cons/static/js/4.000761c4.chunk.js",
     "static/js/4.000761c4.chunk.js.map": "/open-pros-cons/static/js/4.000761c4.chunk.js.map",
     "static/js/5.877390af.chunk.js": "/open-pros-cons/static/js/5.877390af.chunk.js",
@@ -123,7 +123,7 @@
     "index.html": "/open-pros-cons/index.html",
     "service-worker.js": "/open-pros-cons/service-worker.js",
     "service-worker.js.map": "/open-pros-cons/service-worker.js.map",
-    "static/css/4.c7310201.chunk.css.map": "/open-pros-cons/static/css/4.c7310201.chunk.css.map",
+    "static/css/4.532f36fa.chunk.css.map": "/open-pros-cons/static/css/4.532f36fa.chunk.css.map",
     "static/css/main.9e98e40e.chunk.css.map": "/open-pros-cons/static/css/main.9e98e40e.chunk.css.map",
     "static/js/4.000761c4.chunk.js.LICENSE.txt": "/open-pros-cons/static/js/4.000761c4.chunk.js.LICENSE.txt",
     "static/js/53.213cbae6.chunk.js.LICENSE.txt": "/open-pros-cons/static/js/53.213cbae6.chunk.js.LICENSE.txt",
@@ -131,7 +131,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.4acad804.js",
-    "static/css/4.c7310201.chunk.css",
+    "static/css/4.532f36fa.chunk.css",
     "static/js/4.000761c4.chunk.js",
     "static/css/main.9e98e40e.chunk.css",
     "static/js/main.509f9ae4.chunk.js"
