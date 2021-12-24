@@ -2,12 +2,12 @@
 
 A simple pros and cons app for android and web, with no adds, trackers nor malware. [Free as in freedom](https://www.gnu.org/philosophy/free-sw.html).
 
-<a  href="https://tobertet.github.io/open-pros-cons" alt="Link to the application">
+<a href="https://tobertet.github.io/open-pros-cons" alt="Link to the application">
 <img src="https://tobertet.github.io/open-pros-cons/assets/Screenshot.png" alt="Screenshot" width="800"> </a>
 
 [Web application](https://tobertet.github.io/open-pros-cons)
 
-[Download it from F-droid]()
+[Download it from F-droid](https://f-droid.org/packages/com.robertmengual.open_pros_cons/)
 
 [Download it from Play Store]()
 
