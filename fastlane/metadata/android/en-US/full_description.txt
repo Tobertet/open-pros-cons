@@ -2,6 +2,6 @@ With Open Pros & Cons you can create all the arguments and pros and cons lists y
 
 Don't worry about trackers, ads and malware because you won't find any in this app. 
 
-Open Pros & Cons has been destributed using the GPL license and is totally free as in freedom and as in free beer.
+Open Pros & Cons has been distributed using the GPL license and is totally free as in freedom and as in free beer.
 
-Take a look at the code and make all the suggestions and countributions you want in the following URL https://github.com/Tobertet/open-pros-cons
+Take a look at the code and make all the suggestions and contributions you want in the following URL https://github.com/Tobertet/open-pros-cons
