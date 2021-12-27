@@ -1,0 +1,7 @@
+#content {
+  --ion-background-color: darkgray;
+}
+
+.list-item {
+  --ion-background-color: white;
+}

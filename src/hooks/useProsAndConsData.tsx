@@ -6,12 +6,12 @@ import { ProsAndConsList } from '../components/models';
 import moment from 'moment';
 
 const ProsAndConsContext = createContext<{
-  lists: ProsAndConsList[];
+  lists?: ProsAndConsList[];
   create: () => ProsAndConsList;
   remove: (id: number) => void;
   update: (listToUpdate: ProsAndConsList) => void;
 }>({
-  lists: [],
+  lists: undefined,
   create: () => {
     throw new Error('ProsAndConsContext has not been initialized yet');
   },
@@ -24,11 +24,10 @@ const ProsAndConsContext = createContext<{
 });
 
 export const ProsAndConsListsProvider: FC = ({ children }) => {
-  const [prosAndConsLists, setProsAndConsLists] = useState<ProsAndConsList[]>(
-    [],
-  );
+  const [prosAndConsLists, setProsAndConsLists] = useState<ProsAndConsList[]>();
 
   useEffect(() => {
+    if (prosAndConsLists === undefined) return;
     Storage.set({
       key: 'prosAndConsLists',
       value: JSON.stringify(prosAndConsLists),
@@ -39,6 +38,8 @@ export const ProsAndConsListsProvider: FC = ({ children }) => {
     Storage.get({ key: 'prosAndConsLists' }).then(data => {
       if (data.value) {
         setProsAndConsLists(JSON.parse(data.value));
+      } else {
+        setProsAndConsLists([]);
       }
     });
   }, []);
@@ -50,7 +51,7 @@ export const ProsAndConsListsProvider: FC = ({ children }) => {
       name: 'New Pros & Cons list',
       lastEditionDate: moment().format(),
       id:
-        prosAndConsLists.reduce(
+        prosAndConsLists!.reduce(
           (prev, current) => {
             return prev.id > current.id ? prev : current;
           },
@@ -58,20 +59,20 @@ export const ProsAndConsListsProvider: FC = ({ children }) => {
         ).id + 1,
     };
 
-    setProsAndConsLists(previous => [...previous, newList]);
+    setProsAndConsLists(previous => [...previous!, newList]);
     return newList;
   };
 
   const update = (listToUpdate: ProsAndConsList) => {
     setProsAndConsLists(previous =>
-      previous.map(list =>
+      previous!.map(list =>
         list.id === listToUpdate.id ? { ...listToUpdate } : list,
       ),
     );
   };
 
   const remove = (id: number) => {
-    setProsAndConsLists(previous => previous.filter(list => list.id !== id));
+    setProsAndConsLists(previous => previous!.filter(list => list.id !== id));
   };
 
   return (
