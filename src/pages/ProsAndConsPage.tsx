@@ -1,9 +1,11 @@
 import ReasonsList from '../components/ReasonsList';
 import {
   IonBackButton,
+  IonButton,
   IonButtons,
   IonContent,
   IonHeader,
+  IonIcon,
   IonPage,
   IonTitle,
   IonToolbar,
@@ -11,10 +13,21 @@ import {
 import { useState } from 'react';
 import { Reason } from '../components/models';
 import './ProsAndConsPage.css';
+import { pencil } from 'ionicons/icons';
+import { trash } from 'ionicons/icons';
+import { RouteComponentProps, useHistory } from 'react-router';
+import { useProsAndConsData } from '../hooks/useProsAndConsData';
 
-const ProsAndConsPage: React.FC = () => {
+interface Props
+  extends RouteComponentProps<{
+    id: string;
+  }> {}
+
+const ProsAndConsPage: React.FC<Props> = ({ match }) => {
   const [pros, setPros] = useState<Reason[]>([]);
   const [cons, setCons] = useState<Reason[]>([]);
+  const history = useHistory();
+  const { remove } = useProsAndConsData();
 
   return (
     <IonPage id="home-page">
@@ -24,6 +37,19 @@ const ProsAndConsPage: React.FC = () => {
             <IonBackButton defaultHref="/open-pros-cons" />
           </IonButtons>
           <IonTitle>{'Pros & Cons'}</IonTitle>
+          <IonButtons slot="end">
+            <IonButton onClick={() => {}}>
+              <IonIcon slot="icon-only" icon={pencil} />
+            </IonButton>
+            <IonButton
+              onClick={() => {
+                history.replace('/open-pros-cons');
+                remove(parseInt(match.params.id));
+              }}
+            >
+              <IonIcon slot="icon-only" icon={trash} />
+            </IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
