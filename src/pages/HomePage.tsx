@@ -15,9 +15,11 @@ import { FC } from 'react';
 import { useProsAndConsData } from '../hooks/useProsAndConsData';
 import { add } from 'ionicons/icons';
 import './HomePage.css';
+import { useHistory } from 'react-router';
 
 export const HomePage: FC = () => {
   const { lists: prosAndConsLists, create } = useProsAndConsData();
+  const history = useHistory();
 
   return (
     <IonPage>
@@ -35,7 +37,13 @@ export const HomePage: FC = () => {
       </IonHeader>
       <IonContent fullscreen id="content">
         {prosAndConsLists?.map(list => (
-          <IonCard className="list-item" key={list.id} onClick={() => {}}>
+          <IonCard
+            className="list-item"
+            key={list.id}
+            onClick={() => {
+              history.push(`/open-pros-cons/${list.id}`);
+            }}
+          >
             <IonCardContent style={{ display: 'flex', alignItems: 'center' }}>
               <IonText style={{ width: '100%' }}>{list.name}</IonText>
             </IonCardContent>

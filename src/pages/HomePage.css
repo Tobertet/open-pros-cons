@@ -4,4 +4,5 @@
 
 .list-item {
   --ion-background-color: white;
+  --ion-item-color: var(--ion-color-dark);
 }
