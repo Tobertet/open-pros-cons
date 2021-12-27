@@ -1,5 +1,7 @@
 import ReasonsList from '../components/ReasonsList';
 import {
+  IonBackButton,
+  IonButtons,
   IonContent,
   IonHeader,
   IonPage,
@@ -18,6 +20,9 @@ const ProsAndConsPage: React.FC = () => {
     <IonPage id="home-page">
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/open-pros-cons" />
+          </IonButtons>
           <IonTitle>{'Pros & Cons'}</IonTitle>
         </IonToolbar>
       </IonHeader>

@@ -29,6 +29,8 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
+          {/* Android only works with this workaround */}
+          <Route path="/" exact={true} component={HomePage}></Route>
           <Route
             path="/open-pros-cons"
             exact={true}
