@@ -31,10 +31,15 @@ const ProsAndConsPage: React.FC<Props> = ({ match }) => {
 
   useEffect(() => {
     if (!match || !lists || !setProsAndConsList) return;
-    setProsAndConsList(
-      lists.find(list => list.id === parseInt(match.params.id)),
+    const matchingList = lists.find(
+      list => list.id === parseInt(match.params.id),
     );
-  }, [lists, match, prosAndConsList, setProsAndConsList]);
+    if (matchingList) {
+      setProsAndConsList(matchingList);
+    } else {
+      history.replace('/open-pros-cons');
+    }
+  }, [lists, match, prosAndConsList, setProsAndConsList, history]);
 
   return (
     <IonPage id="home-page">
@@ -79,9 +84,25 @@ const ProsAndConsPage: React.FC<Props> = ({ match }) => {
               <IonIcon slot="icon-only" icon={pencil} />
             </IonButton>
             <IonButton
-              onClick={() => {
-                history.replace('/open-pros-cons');
-                remove(parseInt(match.params.id));
+              onClick={async () => {
+                const alert = await alertController.create({
+                  header: 'Delete list',
+                  message: 'Are you sure you want to delete the current list?',
+                  buttons: [
+                    {
+                      text: 'Cancel',
+                      role: 'cancel',
+                    },
+                    {
+                      text: 'Ok',
+                      handler: () => {
+                        history.replace('/open-pros-cons');
+                        remove(parseInt(match.params.id));
+                      },
+                    },
+                  ],
+                });
+                alert.present();
               }}
             >
               <IonIcon slot="icon-only" icon={trash} />
