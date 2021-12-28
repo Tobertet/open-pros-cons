@@ -28,17 +28,18 @@ export const HomePage: FC = () => {
           <IonTitle>{'Open Pros & Cons'}</IonTitle>
           <IonButtons slot="end">
             {prosAndConsLists && (
-              <IonButton onClick={create}>
+              <IonButton onClick={create} data-testid="create-button">
                 <IonIcon slot="icon-only" icon={add} />
               </IonButton>
             )}
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen id="content">
+      <IonContent fullscreen id="content" data-testid="pros-cons-table">
         {prosAndConsLists?.map(list => (
           <IonCard
             className="list-item"
+            data-testid="pros-cons-list-item"
             key={list.id}
             onClick={() => {
               history.push(`/open-pros-cons/${list.id}`);

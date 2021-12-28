@@ -48,19 +48,24 @@ const ProsAndConsPage: React.FC<Props> = ({ match }) => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/open-pros-cons" />
           </IonButtons>
-          <IonTitle>{prosAndConsList?.name}</IonTitle>
+          <IonTitle data-testid="header-title">
+            {prosAndConsList?.name}
+          </IonTitle>
           <IonButtons slot="end">
             <IonButton
+              data-testid="edit-button"
               onClick={async () => {
                 const alert = await alertController.create({
                   header: 'Change title',
                   message: 'Set the new title for your pros & cons list',
+                  cssClass: 'edit-alert',
                   inputs: [
                     {
                       name: 'title',
                       type: 'text',
                       placeholder: 'Title',
                       label: 'Title',
+                      cssClass: 'edit-input',
                       value: prosAndConsList?.name,
                     },
                   ],
@@ -84,10 +89,12 @@ const ProsAndConsPage: React.FC<Props> = ({ match }) => {
               <IonIcon slot="icon-only" icon={pencil} />
             </IonButton>
             <IonButton
+              data-testid="delete-button"
               onClick={async () => {
                 const alert = await alertController.create({
                   header: 'Delete list',
                   message: 'Are you sure you want to delete the current list?',
+                  cssClass: 'delete-alert',
                   buttons: [
                     {
                       text: 'Cancel',
