@@ -17,6 +17,7 @@ import { pencil } from 'ionicons/icons';
 import { trash } from 'ionicons/icons';
 import { RouteComponentProps, useHistory } from 'react-router';
 import { useProsAndConsData } from '../hooks/useProsAndConsData';
+import { alertController } from '@ionic/core';
 
 interface Props
   extends RouteComponentProps<{
@@ -42,9 +43,39 @@ const ProsAndConsPage: React.FC<Props> = ({ match }) => {
           <IonButtons slot="start">
             <IonBackButton defaultHref="/open-pros-cons" />
           </IonButtons>
-          <IonTitle>{'Pros & Cons'}</IonTitle>
+          <IonTitle>{prosAndConsList?.name}</IonTitle>
           <IonButtons slot="end">
-            <IonButton onClick={() => {}}>
+            <IonButton
+              onClick={async () => {
+                const alert = await alertController.create({
+                  header: 'Change title',
+                  message: 'Set the new title for your pros & cons list',
+                  inputs: [
+                    {
+                      name: 'title',
+                      type: 'text',
+                      placeholder: 'Title',
+                      label: 'Title',
+                      value: prosAndConsList?.name,
+                    },
+                  ],
+                  buttons: [
+                    {
+                      text: 'Cancel',
+                      role: 'cancel',
+                    },
+                    {
+                      text: 'Ok',
+                      handler: (value: { title: string }) => {
+                        if (!!value.title)
+                          update({ ...prosAndConsList!, name: value.title });
+                      },
+                    },
+                  ],
+                });
+                alert.present();
+              }}
+            >
               <IonIcon slot="icon-only" icon={pencil} />
             </IonButton>
             <IonButton
