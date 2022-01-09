@@ -7,7 +7,7 @@ A simple pros and cons app for android and web, with no adds, trackers nor malwa
 
 <a alt="Link to F-Droid" href="https://f-droid.org/packages/com.robertmengual.open_pros_cons/" target="_blank"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="F-Droid store logo" height="75"></a>
 
-<a alt="Link to Play Store" href="https://play.google.com/store" target="_blank"><img src="https://tobertet.github.io/open-pros-cons/assets/google-play-badge.png" height="75"></a>
+<a alt="Link to Play Store" href="https://play.google.com/store/apps/details?id=com.robertmengual.open_pros_cons" target="_blank"><img src="https://tobertet.github.io/open-pros-cons/assets/google-play-badge.png" height="75"></a>
 
 [Web application](https://tobertet.github.io/open-pros-cons)
 
@@ -15,7 +15,7 @@ A simple pros and cons app for android and web, with no adds, trackers nor malwa
 
 [Download it from Fossdroid](https://fossdroid.com/a/open-pros-cons.html)
 
-[Download it from Play Store](https://play.google.com/store)
+[Download it from Play Store](https://play.google.com/store/apps/details?id=com.robertmengual.open_pros_cons)
 
 This project was bootstrapped with [Ionic](https://github.com/ionic-team/ionic-framework) and [Create React App](https://github.com/facebook/create-react-app).
 We use [Capacitor](https://github.com/ionic-team/capacitor) for the native app builds.
