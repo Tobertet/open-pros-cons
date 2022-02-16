@@ -4,6 +4,7 @@ import { Storage } from '@capacitor/storage';
 import { ProsAndConsList } from '../components/models';
 
 import moment from 'moment';
+import { demoProsAndCons } from './demoProsAndCons';
 
 const ProsAndConsContext = createContext<{
   lists?: ProsAndConsList[];
@@ -39,7 +40,7 @@ export const ProsAndConsListsProvider: FC = ({ children }) => {
       if (data.value) {
         setProsAndConsLists(JSON.parse(data.value));
       } else {
-        setProsAndConsLists([]);
+        setProsAndConsLists(demoProsAndCons);
       }
     });
   }, []);
@@ -59,7 +60,7 @@ export const ProsAndConsListsProvider: FC = ({ children }) => {
         ).id + 1,
     };
 
-    setProsAndConsLists(previous => [...previous!, newList]);
+    setProsAndConsLists(previous => [newList, ...previous!]);
     return newList;
   };
 
